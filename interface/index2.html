@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mobileye Parking Violation Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Parking Violation Management</h1>
+
+  <section>
+    <h2> Daily Violations</h2>
+    <button onclick="fetchDaily()">🔄 Refresh</button>
+    <ul id="dailyList"></ul>
+  </section>
+
+  <section>
+    <h2> Weekly Offender Report</h2>
+    <button onclick="fetchWeekly()">🔄 Refresh</button>
+    <ul id="weeklyList"></ul>
+  </section>
+
+  <section>
+    <h2> Report New Violation</h2>
+    <input id="plateNumber" placeholder="License Plate">
+    <input id="reason" placeholder="Reason for Violation">
+    <button onclick="submitViolation()">🚨 Submit Violation</button>
+  </section>
+
+  <section>
+    <h2>Send Summary Emails</h2>
+    <button onclick="sendDailyEmail()">📧 Send Daily Summary</button>
+    <button onclick="sendWeeklyEmail()">📧 Send Weekly Summary</button>
+  </section>
+
+  <section>
+  <h2>Driver Lookup</h2>
+  <input id="searchPlate" placeholder="Enter license plate..." />
+  <button onclick="searchDriver()">🔍 Search</button>
+
+  <div id="driverDetails" class="driver-card"></div>
+
+  <div style="margin-top: 10px;">
+    <button onclick="sendNotification()">📧 Notify Driver</button>
+    <button onclick="openReportModal()">📝 Create Report</button>
+  </div>
+</section>
+
+<!-- Modal for detailed report -->
+<div id="reportModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeReportModal()">&times;</span>
+    <h3>Report Violation</h3>
+    <select id="violationReason">
+      <option disabled selected>Select Violation Reason</option>
+      <option>חניה בחניית נכים</option>
+      <option>חניה בחניית היריון</option>
+      <option>חניה בחניה שמורה</option>
+      <option>חניה בעמדת טעינה</option>
+      <option>חסימת מחסום</option>
+      <option>חסימת מחסן</option>
+      <option>חסימת רכב</option>
+      <option>חסימת חניה כפולה</option>
+    </select>
+    <input type="file" id="violationImage" accept="image/*" />
+    <button onclick="submitDetailedReport()">🚨 Submit Report</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
